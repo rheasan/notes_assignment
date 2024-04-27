@@ -1,9 +1,15 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NotesContext } from "../utils/contexts";
 import Note from "./Note";
 const NotesContainer = () => {
 	const [notes, setNotes] = useState<Array<Note>>([]);
+	const [containerBounds, setContainerBounds] = useState({x: 0, y: 0});
 	const containerRef = useRef(null);
+
+	useEffect(() => {
+		const target = containerRef.current! as HTMLDivElement;
+		setContainerBounds(target.getBoundingClientRect());
+	}, []);
 
 	const addNote = (e : React.MouseEvent) => {
 		const target = containerRef.current! as HTMLDivElement;
@@ -22,14 +28,10 @@ const NotesContainer = () => {
 		console.log(newNoteData);
 		setNotes((prev) => [...prev, newNoteData]);
 	}
-	const getContainerBounds = () => {
-		const target = containerRef.current! as HTMLDivElement;
-		return target.getBoundingClientRect();
-	}
 
 	return (
 		<div className="h-3/4 w-3/4 bg-stone-400 relative overflow-hidden" onDoubleClick={addNote} ref={containerRef}>
-			<NotesContext.Provider value={{containerBounds: getContainerBounds(), setNotes}}>
+			<NotesContext.Provider value={{containerBounds, setNotes}}>
 				{
 					notes?.map((e,i) => {
 						return <Note data={e} key={i} index={i}/>
