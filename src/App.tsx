@@ -35,9 +35,6 @@ function App() {
 				</button>
 			</div>
 			<NotesContainer />
-			<div className="w-full">
-				<p>Download</p>
-			</div>
 			<Toaster />
 		</div>
 	)
