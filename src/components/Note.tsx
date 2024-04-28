@@ -38,9 +38,7 @@ const Note = (props: {data: Note, index: number}) => {
 		<div 
 			className="w-fit h-fit bg-primary border-2 border-black rounded-b p-4 absolute focus:outline-none text-primary-foreground"
 			onKeyDown={(e) => {
-				console.log("key pressed");
 				if(e.key === "Shift") {
-					console.log("shift pressed");
 					setIsDragging(true);
 				}
 			}}

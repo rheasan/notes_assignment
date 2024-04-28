@@ -18,7 +18,6 @@ const NotesContainer = () => {
 
 		const clickVX = e.clientX;
 		const clickVY = e.clientY;
-		console.log("clicked at", clickVX, clickVY);
 		// target.getBoundingClientRect() and MouseEvent.clientX both give the location in viewport coords
 		// so we need to subtract them to get proper offset of the click from the top-left corner of NotesContainer
 		const newNoteData: Note = {
@@ -26,7 +25,6 @@ const NotesContainer = () => {
 			posx: clickVX - targetVX,
 			posy: clickVY - targetVY
 		}
-		console.log(newNoteData);
 		setNotes((prev) => [...prev, newNoteData]);
 	}
 
