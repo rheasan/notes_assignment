@@ -26,9 +26,9 @@ function App() {
 	}
 
 	return (
-		<div className="w-screen h-screen flex flex-col items-center justify-around bg-stone-900 dark">
+		<div className="w-screen h-screen flex flex-col items-center justify-around bg-background dark">
 			<div className="w-full text-white p-0 flex justify-end">
-				<button className="border border-input bg-slate-700 shadow-sm hover:bg-slate-600 rounded inline-flex p-4 font-bold mx-8"
+				<button className="border border-input bg-primary shadow-sm hover:bg-primary/90 rounded inline-flex p-4 font-bold mx-8 transition-colors"
 					onClick={showHelp}	
 				>
 					Help&nbsp;<HelpIcon />

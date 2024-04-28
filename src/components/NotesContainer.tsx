@@ -30,7 +30,7 @@ const NotesContainer = () => {
 	}
 
 	return (
-		<div className="h-3/4 w-3/4 bg-stone-400 relative overflow-hidden" onDoubleClick={addNote} ref={containerRef}>
+		<div className="h-3/4 w-3/4 bg-foreground relative overflow-hidden" onDoubleClick={addNote} ref={containerRef}>
 			<NotesContext.Provider value={{containerBounds, setNotes}}>
 				{
 					notes?.map((e,i) => {

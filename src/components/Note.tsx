@@ -28,7 +28,7 @@ const Note = (props: {data: Note, index: number}) => {
 
 	return (
 		<div 
-			className="w-fit h-fit bg-blue-500 border-2 border-black rounded-b p-4 absolute focus:outline-none"
+			className="w-fit h-fit bg-primary border-2 border-black rounded-b p-4 absolute focus:outline-none text-primary-foreground"
 			onKeyDown={(e) => {
 				console.log("key pressed");
 				if(e.key === "Shift") {
@@ -47,7 +47,7 @@ const Note = (props: {data: Note, index: number}) => {
 			tabIndex={index + 1}
 		>
 			<textarea id={`note_${index}`} 
-				className="border-black bg-transparent focus:outline-none min-w-32 min-h-32 "
+				className="border-black bg-transparent focus:outline-none min-w-32 min-h-32 resize"
 				onChange={(e) => {
 					const target = e.target as HTMLTextAreaElement;
 					setText(target.value);
