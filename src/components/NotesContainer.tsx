@@ -52,8 +52,35 @@ const NotesContainer = () => {
 		writeFile(wb, "Notes.xlsx");
 	}, [noteSheetData]);
 
+	const handleDrop = (e: React.DragEvent) => {
+		e.preventDefault();
+		const clickOffsetX = e.clientX - containerBounds.x;
+		const clickOffsetY = e.clientY - containerBounds.y;
+
+		const items = e.dataTransfer.items;
+		for(const item of items) {
+			if(item.kind === "string") {
+				item.getAsString((text) => {
+					const newNote: Note = {
+						text,
+						posx: clickOffsetX,
+						posy: clickOffsetY
+					};
+					setNotes(prev => [...prev, newNote]);
+				});
+				break;
+			}
+		}
+	}
+
 	return (
-		<div className="h-3/4 w-3/4 bg-foreground relative overflow-hidden" onDoubleClick={addNote} ref={containerRef}>
+		<div className="h-3/4 w-3/4 bg-foreground relative overflow-hidden" onDoubleClick={addNote} 
+			ref={containerRef}
+			onDrop={handleDrop}
+			onDragOver={(e) => {
+				e.preventDefault();
+			}}
+		>
 			<NotesContext.Provider value={{containerBounds, setNotes}}>
 				{
 					notes?.map((e,i) => {
