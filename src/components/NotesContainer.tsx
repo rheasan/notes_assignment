@@ -22,7 +22,7 @@ const NotesContainer = () => {
 		// target.getBoundingClientRect() and MouseEvent.clientX both give the location in viewport coords
 		// so we need to subtract them to get proper offset of the click from the top-left corner of NotesContainer
 		const newNoteData: Note = {
-			text: Math.random().toString(),
+			text: "",
 			posx: clickVX - targetVX,
 			posy: clickVY - targetVY
 		}
@@ -64,7 +64,7 @@ const NotesContainer = () => {
 					className="absolute bottom-0 right-0 text-foreground border border-input bg-primary hover:bg-primary/90 inline-flex p-4 font-bold transition-colors"
 					onClick={convertToXlsx}
 				>
-					Convert To XLSX
+					Export Notes
 				</button>
 			</NotesContext.Provider>
 		</div>

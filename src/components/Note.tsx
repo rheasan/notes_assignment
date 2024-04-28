@@ -14,6 +14,14 @@ const Note = (props: {data: Note, index: number}) => {
 		// double click inside the note should not trigger the event in the container
 		e.stopPropagation();
 	}
+	const updateNoteState= () => {
+		setNotes((prev) => {
+			const newNotes = [...prev];
+			newNotes[index].text = text;
+			return newNotes;
+		});
+	}
+
 	const handleDragEnd = (e: React.DragEvent) => {
 		e.stopPropagation();
 		const [newX, newY] = [e.clientX - containerBounds.x, e.clientY - containerBounds.y];
@@ -51,6 +59,7 @@ const Note = (props: {data: Note, index: number}) => {
 				onChange={(e) => {
 					const target = e.target as HTMLTextAreaElement;
 					setText(target.value);
+					updateNoteState();
 				}}
 				autoFocus
 				value={text}
